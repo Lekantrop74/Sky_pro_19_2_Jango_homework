@@ -12,4 +12,10 @@ def index(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        print(name, email, message)
+        return render(request, 'catalog/contact.html', {'name': name, 'email': email, 'message': message})
     return render(request, 'catalog/contact.html')
